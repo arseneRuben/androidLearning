@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+    <body>
+        <section>
+            <h1>Moodle Player (générateur)</h1>
+
+            <p>Moodle Player exécute une transformation du contenu de base pour générer une présentation moderne.</p>
+
+            <article>
+                <h2>Configurations spécifiques pour moodle-player</h2>
+
+                <p>
+                    Pour les configurations globale, voir la section sur
+                    <a href="#id_configuration_des_balises_meta" target="_self">
+                        les balises
+                        <code>meta</code>
+                    </a>
+                    .
+                </p>
+
+                <pre>
+                    <code class="html" data-title="Active moodle-player pour la transformation du contenu" data-subtitle="Le fichier moodle-player.html sera généré dans le répertoire /dist.">
+                        <![CDATA[
+                            <head>
+                                <meta name="teaching-assistant-generator" content="moodle-player" />
+                            <head>
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+
+            <article>
+                <h2>Composantes de présentation</h2>
+                <p>
+                    Le framework
+                    <a href="https://getbootstrap.com/docs/4.3/getting-started/introduction/">Bootstrap 4</a>
+                    est disponible lors du rendu HTML, donc tous les structures HTML valide seront présentés correctement.
+                </p>
+
+                <p>
+                    La mise en page peut être réalisée avec
+                    <a href="https://getbootstrap.com/docs/4.0/layout/grid/">le system de grille de Bootstrap</a>
+                </p>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm border border-dark">
+                        Première colonne
+                        </div>
+                        <div class="col-sm border">
+                        Deuxième colonne
+                        </div>
+                        <div class="col-sm">
+                        Troisième colonne
+                        </div>
+                    </div>
+                </div>
+
+                <pre>
+                    <code class="html" data-title="Mise en page">
+                        <![CDATA[
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm border border-dark">Première colonne</div>
+                                    <div class="col-sm border">Deuxième colonne</div>
+                                    <div class="col-sm">Troisième colonne</div>
+                                </div>
+                            </div>
+                        ]]>
+                    </code>
+                </pre>
+
+                <p>Plusieurs composantes seront générés automatiquement à partir de syntaxe de base suivante.</p>
+            </article>
+
+            <article>
+                <h3>Texte</h3>
+
+                <p>
+                    Le texte peut utiliser des balises pour représenter
+                    <em>une emphase</em>
+                    ,
+                    <strong>une importance</strong>
+                    ou
+                    <kbd>une entrée au clavier</kbd>
+                    .
+                </p>
+                <pre>
+                    <code class="html">
+                        <![CDATA[
+                            Le texte peut contenir du formatage pour représenter <em>une emphase</em>,
+                            <strong>une importance</strong> ou <kbd>une entrée au clavier</kbd>.
+                        ]]>
+                    </code>
+                </pre>
+
+                <blockquote class="blockquote">
+                    <p>Une citation peut être intégrée de cette façon</p>
+                    <footer class="blockquote-footer">
+                        <cite title="Source Title">Martin Vachon</cite>
+                    </footer>
+                </blockquote>
+                <pre>
+                    <code class="html">
+                        <![CDATA[
+                            <blockquote class="blockquote">
+                                <p>Une citation peut être intégrée de cette façon</p>
+                                <footer class="blockquote-footer">
+                                    <cite title="Source Title">Martin Vachon</cite>
+                                </footer>
+                            </blockquote>
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+
+            <article>
+                <h3>Image</h3>
+
+                <p>
+                    <strong>src="../asset/"</strong>
+                    Commun à toutes les langues.
+                </p>
+                <p>
+                    <strong>src="asset/"</strong>
+                    Spécifique à la langue du document.
+                </p>
+
+                <img class="img-fluid rounded" src="../asset/coding.jpg" alt="Description alternative" data-title="Cette image est changée à partir de /doc/asset/" data-subtitle="Redimensionner la fenêtre de votre navigateur pour voir l'intégration fluide." />
+
+                <pre>
+                    <code class="html">
+                        <![CDATA[
+                            <img
+                                class="img-fluid rounded"
+                                src="../asset/coding.jpg"
+                                alt="Description alternative"
+                                data-title="Cette image est changée à partir de /doc/asset/"
+                                data-subtitle="Redimensionner la fenêtre de votre navigateur pour voir l'intégration fluide." />
+                        ]]>
+                    </code>
+                </pre>
+
+            </article>
+
+            <article>
+                <h3>Information optionnelle</h3>
+
+                <details>
+                    <summary>Information supplémentaire optionnelle</summary>
+                    <div>
+                        <p>Permet d'ajouter beaucoup d'information au cours sans surcharger le contenu de base.</p>
+                        <ul>
+                            <li>Description et lien suplémentaire</li>
+                            <li>Description et lien suplémentaire</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <pre>
+                    <code class="html">
+                        <![CDATA[
+                            <details>
+                                <summary>Information supplémentaire optionnelle</summary>
+                                <div>
+                                    <p>Permet d'ajouter beaucoup d'information au cours sans surcharger le contenu de base.</p>
+                                    <ul>
+                                        <li>Description et lien suplémentaire</li>
+                                        <li>Description et lien suplémentaire</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+
+            <article>
+                <h3>Code source</h3>
+                <p>
+                    La librairie
+                    <a href="https://highlightjs.org/">
+                        <em>highlight.js</em>
+                    </a>
+                    est utilisé pour la coloration de la syntaxe.
+                    <a href="#id_teaching-assistant-code-style" target="_self">
+                        Voir le paramètre
+                        <code>teaching-assistant-code-style</code>
+                    </a>
+                </p>
+
+                <!--
+                    There must be a better way to do this and avoid the validation bug.
+                -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Exemple d'usage pour la coloration du code source.</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Plusieurs exemples de résultat en fonction du langage sont disponibles plus bas.</h6>
+
+                        <code class="html hljs xml">
+                            <div>
+                                <![CDATA[<pre>]]>
+                            </div>
+                            <div style="padding-left: 20px">
+                                <![CDATA[<code class="html" data-title="Titre du code" data-subtitle="Sous-titre ou description du code">]]>
+                            </div>
+                            <div style="padding-left: 20px">
+                                <![CDATA[<![CDATA[]]>
+                            </div>
+                            <div style="padding-left: 20px">
+                                Le code source ici sera coloré en fontion l'attribut class="" de la balise code.
+                            </div>
+                            <div style="padding-left: 20px">
+                                ]]>
+                            </div>
+                            <div style="padding-left: 20px">
+                                <![CDATA[</code>]]>
+                            </div>
+                            <div>
+                                <![CDATA[</pre>]]>
+                            </div>
+                        </code>
+
+                    </div>
+                </div>
+
+                <pre>
+                    <code class="html" data-title="HTML">
+                        <![CDATA[
+                            <!DOCTYPE html>
+                            <html lang="en">
+
+                            <head>
+                                <meta charset="UTF-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <title>Title</title>
+                            </head>
+
+                            <body>
+
+                            </body>
+
+                            </html>
+                        ]]>
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="css" data-title="CSS">
+                        <![CDATA[
+                            body {
+                                padding-top: 70px;
+                            }
+
+                            td.command-column, th.command-column {
+                                text-align: right;
+                            }
+                        ]]>
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="javascript" data-title="JavaScript">
+                        <![CDATA[
+                            'use strict'
+
+                            const colorSelect = document.getElementById('colorSelect')
+                            colorSelect.addEventListener('change', function (event) {
+                                document.body.style.backgroundColor = event.target.value
+                            })
+                        ]]>
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="c++" data-title="C++">
+                        <![CDATA[
+                            #include <iostream>
+
+                            int main ()
+                            {
+                              std::cout << "Hello World! ";     // prints Hello World!
+                              std::cout << "I'm a C++ program"; // prints I'm a C++ program
+                            }
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+
+            <article></article>
+
+        </section>
+
+    </body>
+</html>

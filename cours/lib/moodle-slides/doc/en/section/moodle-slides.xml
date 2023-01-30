@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html lang="en">
+    <body>
+        <section>
+            <h1>Moodle Slides (générateur)</h1>
+
+            <p>Moodle Slides exécute une transformation du contenu de base pour générer une présentation moderne.</p>
+
+            <article>
+                <h2>Configuration spécifiques pour moodle-slides</h2>
+
+                <p>
+                    Pour les configurations globale, voir la section sur
+                    <a href="#id_configuration_des_balises_meta" target="_self">
+                        les balises
+                        <code>meta</code>
+                    </a>
+                    .
+                </p>
+
+                <pre>
+                    <code class="html" data-title="Active moodle-slides pour la transformation du contenu" data-subtitle="Le fichier moodle-slides.html sera généré dans le répertoire /dist.">
+                        <![CDATA[
+                            <head>
+                                <meta name="teaching-assistant-generator" content="moodle-slides" />
+                            <head>
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+
+        </section>
+
+    </body>
+</html>

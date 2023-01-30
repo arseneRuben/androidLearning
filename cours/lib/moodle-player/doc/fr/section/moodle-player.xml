@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+    <body>
+        <section>
+            <h1>Moodle Player (générateur)</h1>
+
+            <p>Moodle Player exécute une transformation du contenu de base pour générer une présentation moderne.</p>
+
+            <article>
+                <h2>Configurations spécifiques pour moodle-player</h2>
+
+                <p>
+                    Pour les configurations globales, voir la section sure
+                    <a href="#id_configuration_des_balises_meta" target="_self">
+                        les balises
+                        <code>meta</code>
+                    </a>
+                    .
+                </p>
+
+                <pre>
+                    <code class="html" data-title="Active moodle-player pour la transformation du contenu" data-subtitle="Le fichier moodle-player.html sera généré dans le répertoire /dist.">
+                        <![CDATA[
+                            <head>
+                                <meta name="teaching-assistant-generator" content="moodle-player" />
+                            <head>
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+
+        </section>
+
+    </body>
+</html>

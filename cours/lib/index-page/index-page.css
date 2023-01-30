@@ -1,0 +1,23 @@
+.container-fluid {
+    width: 75%;
+}
+
+h1 {
+    font-size: 6vh;
+}
+
+.container-fluid>div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-fluid>div img {
+    width: 100%;
+    max-width: 300px;
+    min-width: 100px;
+    border-radius: 6px;
+}
+
+.container-fluid>div>div {
+    padding: 20px;
+}
