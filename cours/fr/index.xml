@@ -4,9 +4,11 @@
     <title>Exemple</title>
     <meta name="teaching-assistant-code-style" content="dracula"/>
     <meta name="teaching-assistant-generator" content="moodle-player"/>
+    <!--        uncomment to add slide-->
+    <!--        <meta name="teaching-assistant-generator" content="moodle-slides"/>-->
     <meta name="teaching-assistant-menu-level" content="3"/>
     <meta name="teaching-assistant-version" content="2.8.0"/>
-    <meta name="teaching-assistant-course-datetime" content="2023-01-31 08:56:03"/>
+    <meta name="teaching-assistant-course-datetime" content="2023-01-31 16:19:37"/>
   </head>
   <body>
     <section>
@@ -1018,6 +1020,240 @@
         <img class="img-fluid rounded" src="../asset/ui_reference_viewgroup.png"/>
       </article>
       <article>
+        <h2>Containeurs et Components existant</h2>
+        <p>Dans le SDK Android il y a déjà des View et ViewGroup codés pour nous. Voyons une liste des principaux
+            utilisés dans ce cours.
+        </p>
+      </article>
+      <article>
+        <h3>Les containeurs</h3>
+        <p>Permet d'avoir des enfants à l'intérieur. En fonction des conteneurs les enfants auront un layout différent
+        </p>
+      </article>
+      <article>
+        <h4>
+          <a href="https://developer.android.com/develop/ui/views/layout/linear">LinearLayout</a>
+        </h4>
+        <p>L'un des plus simples à utiliser. Il permet d'avoir des enfants les uns en dessous des autres (VERTICAL) ou
+            les uns a côté des autres (HORIZONTAL).
+        </p>
+      </article>
+      <article>
+        <h4>
+          <a href="https://developer.android.com/develop/ui/views/layout/relative">RelativeLayout</a>
+        </h4>
+        <p>Ce ViewGroupe affiche les enfants dans des positions relatives. La position de
+            chaque enfant peut être spécifiée par rapport aux éléments enfants ou par rapport à la zone parent
+        </p>
+      </article>
+      <article>
+        <h4>ScrollView</h4>
+        <p>Permet d'ajouter un défilement si le contenu dépasse de la vue. Existe aussi le HorizontalScrollView</p>
+      </article>
+      <article>
+        <h4>
+          <a href="https://developer.android.com/develop/ui/views/layout/constraint-layout">ConstraintLayout</a>
+        </h4>
+        <p>ConstraintLayout vous permet de créer des mises en page volumineuses et complexes. Il est similaire au
+            RelativeLayout en ce sens que toutes les vues ont disposées en fonction des relations entre les vues, mais
+            il est plus flexible que le RelativeLayout. Ce composant ne sera pas traité en cours.
+        </p>
+      </article>
+      <article>
+        <h3>Les Composants</h3>
+        <p>Ce sont les composants d'affichage, comme un bouton un label ou une image.</p>
+        <p>Voici une liste des principaux :</p>
+        <ul>
+          <li>
+            <a href="https://developer.android.com/reference/android/widget/Button">Button</a>
+            
+                affiche un bouton avec un texte.
+            
+          </li>
+          <li>
+            <a href="https://developer.android.com/reference/android/widget/TextView">TextView</a>
+            
+                permet d'afficher du texte comme un label.
+            
+          </li>
+          <li>
+            <a href="https://developer.android.com/reference/android/widget/EditText">EditText</a>
+            
+                permet de demander à l'utilisateur d'entrer du texte.
+            
+          </li>
+          <li>
+            <a href="https://developer.android.com/reference/android/widget/ImageView">ImageView</a>
+            
+                permet d'afficher une image dans la vue.
+            
+          </li>
+          <li>
+            <a href="https://developer.android.com/reference/android/widget/CheckBox">CheckBox</a>
+            
+                permet d'afficher une checkBox à l'écran
+            
+          </li>
+        </ul>
+        <p>Il existe beaucoup d'autre composant, mais on ne peut pas tous les détailler ici.</p>
+      </article>
+      <article>
+        <h2>Les attributs XML</h2>
+        <p>Chaque View et ViewGroup ont leurs propres attributs XML. Certains attributs sont spécifiques à un objet
+            View, mais ces attributs sont hérités du View parent. Comme tous les composants et containeurs héritent de
+            View ils ont plusieurs attributs en commun. Voici les quelques attributs importants. Pour la majorité ils
+            viennent de View.
+        </p>
+      </article>
+      <article>
+        <h3>id</h3>
+        <p>Tout objet View peut avoir un ID entier qui lui est associé, pour identifier de manière unique la vue.
+            Lorsque l'application est compilée, cet ID est référencé sous forme d'entier, mais l'ID est
+            généralement attribué dans le fichier XML de mise en page sous forme de chaîne, dans l'attribut id. Il
+            s'agit d'un attribut XML commun à tous les objets View. Voici la syntaxe de creation d'un id par XML.
+        </p>
+        <pre>
+          <code class="xml"><![CDATA[
+                    android:id="@+id/my_id"
+                ]]></code>
+        </pre>
+        <p>ici le "@" veut dire qu'on va accéder aux ressources, le "+id" est là pour demander de créer un id ou
+            d'utiliser celui existant.
+        </p>
+        <p>Comme on l'a vu précédemment on va pouvoir accéder au View depuis son id grâce à findViewById(id_view).</p>
+      </article>
+      <article>
+        <h3>Paramètres du layout</h3>
+        <p>
+          Tous les attributs jouant sur le layout de la vue vont commencer par layout_quelquechose. Par exemple pour
+            définir le la largeur et la hauteur, on devra utiliser 
+          <kbd>layout_width</kbd>
+           et 
+          <kbd>layout_height</kbd>
+          .
+            On peut définir une taille exacte, mais la plupart du temps, on va préférer utiliser une de ses deux
+            valeurs.
+        
+        </p>
+        <ul>
+          <li>wrap_content : demande à la vue de prendre la taille de son contenu</li>
+          <li>match_parent : demande à la vue de prendre la taille de tout le parent</li>
+        </ul>
+      </article>
+      <article>
+        <h3>gravity / layout gravity</h3>
+        <p>Gravity est l'attribut à appliquer sur les enfants. Permet d'expliquer la position dans l'espace que l'enfant
+            prend. Layout_gravity permet de définir la position par rapport au parent.
+        </p>
+        <pre>
+          <code class="xml"><![CDATA[
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            xmlns:tools="http://schemas.android.com/tools"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            tools:context=".MainActivity">
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Hello World!" />
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:text="Hello World!" />
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:gravity="right"
+                                android:layout_height="wrap_content"
+                                android:text="Hello World!" />
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Hello World!" />
+                    </LinearLayout>
+                ]]></code>
+        </pre>
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <img class="img-fluid rounded" src="../asset/manipulation_gravity_result.png"/>
+              <p>
+                        Voici le résultat dans l'émulateur.
+                    </p>
+            </div>
+            <div class="col-sm">
+              <img class="img-fluid rounded" src="../asset/manipulation_gravity_draw.png"/>
+              <p>Voici l'explication</p>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article>
+        <h3>Poids des éléments (layout_weight)</h3>
+        <p>Voici un attribut spécifique au LinearLayout qui va être très utile pour faire des designs Responsive. Il va
+            nous permettre d'expliquer le poids que l'objet va prendre dans la vue
+        </p>
+        <p>Le LinearLayout va additionner tous les poids et faire en sorte que la vue la fraction désirée du poids
+            total.
+        </p>
+        <pre>
+          <code class="xml"><![CDATA[
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            xmlns:tools="http://schemas.android.com/tools"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            tools:context=".MainActivity">
+                        <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="40"
+                                android:text="btn 1" />
+                        <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="60"
+                                android:text="btn 2" />
+                    </LinearLayout>
+                ]]></code>
+        </pre>
+        <p>Ici comme le LinearLayout est vertical il va additionner tous les poids soit 60+40 = 100 et faire en sorte
+            que le premier bouton fasse 40/100 et le deuxième 60/100
+        </p>
+        <img class="img-fluid rounded" src="../asset/manipulation_weight_verticale.png"/>
+        <pre>
+          <code class="xml"><![CDATA[
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            xmlns:tools="http://schemas.android.com/tools"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            tools:context=".MainActivity">
+                        <Button
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:text="btn 1" />
+                        <Button
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="5"
+                                android:text="btn 2" />
+                    </LinearLayout>
+                ]]></code>
+        </pre>
+        <p>Dans le cas ou le LinearLayout est horizontal le poids sera sur le width</p>
+        <img class="img-fluid rounded" src="../asset/manipulation_weight_horizontale.png"/>
+      </article>
+    </section>
+    <section>
+      <h1>Manipulation des vues</h1>
+      <article>
         <h2>Création de la vue</h2>
         <p>Il existe 3 façons de créer des UI :</p>
         <ul>
@@ -1178,7 +1414,7 @@
         <p>Souvent on va vouloir "mettre la main" sur une vue créée en XML, pour être capable d'interagir avec elle à
             travers le code Java. Comme dans l'exemple précédent où on voulait remplir la boite grise de Vignette.
         </p>
-        <p>Dans la classe view il existe un attribut id. C'est grâce à cet id que l'on va être capable de "mettre la
+        <p>Dans la classe View il existe un attribut id. C'est grâce à cet id que l'on va être capable de "mettre la
             main" sur une vue particulière dans une activity.
         </p>
         <p>Il existe une methode findViewById(int id), cette méthode devrait vous rappeler une méthode utiliser en
@@ -1220,7 +1456,7 @@
                             super.onCreate(savedInstanceState);
                             context = this;
                             setContentView(R.layout.activity_main);
-                            //access to textview ass by xml
+                            //access to textview
                             TextView textView = findViewById(R.id.text_view);
                             //change value of textview
                             textView.setText("New text to print");
@@ -1228,243 +1464,124 @@
                     }
                 ]]></code>
         </pre>
-      </article>
-      <article>
-        <h2>Containeurs et Components existant</h2>
-        <p>Dans le SDK Android il y a déjà des View et ViewGroup codés pour nous. Voyons une liste des principaux
-            utilisés dans ce cours.
+        <p>Attention normalement findViewById est une methode de View, mais ils ont redéfini cette méthode dans
+            Activity pour aller chercher directement dans le Layout de la vue.
         </p>
       </article>
       <article>
-        <h3>Les containeurs</h3>
-        <p>Permet d'avoir des enfants à l'intérieur. En fonction des conteneurs les enfants auront un layout différent
+        <h2>Sérialisation / Desérialisation</h2>
+        <p>La sérialisation est utilisée pour convertir un objet en un flux d'octets qui peut être envoyé vers
+            n'importe quelle autre programme en cours d'exécution via un réseau ou peut être conservé sur le disque dans
+            le but de le reconstruire plus tard.
         </p>
-      </article>
-      <article>
-        <h4>
-          <a href="https://developer.android.com/develop/ui/views/layout/linear">LinearLayout</a>
-        </h4>
-        <p>L'un des plus simples à utiliser. Il permet d'avoir des enfants les uns en dessous des autres (VERTICAL) ou
-            les uns a côté des autres (HORIZONTAL).
-        </p>
-      </article>
-      <article>
-        <h4>
-          <a href="https://developer.android.com/develop/ui/views/layout/relative">RelativeLayout</a>
-        </h4>
-        <p>Ce ViewGroupe affiche les enfants dans des positions relatives. La position de
-            chaque enfant peut être spécifiée par rapport aux éléments enfants ou par rapport à la zone parent
-        </p>
-      </article>
-      <article>
-        <h4>ScrollView</h4>
-        <p>Permet d'ajouter un défilement si le contenu dépasse de la vue. Existe aussi le HorizontalScrollView</p>
-      </article>
-      <article>
-        <h4>
-          <a href="https://developer.android.com/develop/ui/views/layout/constraint-layout">ConstraintLayout</a>
-        </h4>
-        <p>ConstraintLayout vous permet de créer des mises en page volumineuses et complexes. Il est similaire au
-            RelativeLayout en ce sens que toutes les vues ont disposées en fonction des relations entre les vues, mais
-            il est plus flexible que le RelativeLayout. Ce composant ne sera pas traité en cours.
-        </p>
-      </article>
-      <article>
-        <h3>Les Composants</h3>
-        <p>Ce sont les composants d'affichage, comme un bouton un label ou une image.</p>
-        <p>Voici une liste des principaux :</p>
+        <p>La desérialisation est le procédé inverse qui permettra de reconstruire un objet depuis le flux d'octets</p>
+        <p>Il existe plusieurs formats de sérialisation comme :</p>
         <ul>
-          <li>
-            <a href="https://developer.android.com/reference/android/widget/Button">Button</a>
-            
-                affiche un bouton avec un texte.
-            
-          </li>
-          <li>
-            <a href="https://developer.android.com/reference/android/widget/TextView">TextView</a>
-            
-                permet d'afficher du texte comme un label.
-            
-          </li>
-          <li>
-            <a href="https://developer.android.com/reference/android/widget/EditText">EditText</a>
-            
-                permet de demander à l'utilisateur d'entrer du texte.
-            
-          </li>
-          <li>
-            <a href="https://developer.android.com/reference/android/widget/ImageView">ImageView</a>
-            
-                permet d'afficher une image dans la vue.
-            
-          </li>
-          <li>
-            <a href="https://developer.android.com/reference/android/widget/CheckBox">CheckBox</a>
-            
-                permet d'afficher une checkBox à l'écran
-            
-          </li>
+          <li>En Java, implémenter l'interface Serializable</li>
+          <li>le JSON</li>
+          <li>le XML</li>
         </ul>
-        <p>Il existe beaucoup d'autre composant, mais on ne peut pas tous les détailler ici.</p>
-      </article>
-    </section>
-    <section>
-      <h1>Manipulation des vues</h1>
-      <article>
-        <h2>Les attributs XML</h2>
-        <p>Chaque View et ViewGroup ont leurs propres attributs XML. Certains attributs sont spécifiques à un objet
-            View, mais ces attributs sont hérités du View parent. Comme tous les composants et containeurs héritent de
-            View ils ont plusieurs attributs en commun. Voici les quelques attributs importants. Pour la majorité ils
-            viennent de View.
+        <p>Connaitre le format utilisé est très important, pour être capable de faire l'opération dans les deux sens.
         </p>
+        <img class="img-fluid rounded" src="../asset/manipulation_serialization.png"/>
       </article>
       <article>
-        <h3>id</h3>
-        <p>Tout objet View peut avoir un ID entier qui lui est associé, pour identifier de manière unique la vue.
-            Lorsque l'application est compilée, cet ID est référencé sous forme d'entier, mais l'ID est
-            généralement attribué dans le fichier XML de mise en page sous forme de chaîne, dans l'attribut id. Il
-            s'agit d'un attribut XML commun à tous les objets View. Voici la syntaxe de creation d'un id par XML.
-        </p>
-        <pre>
-          <code class="xml"><![CDATA[
-                    android:id="@+id/my_id"
-                ]]></code>
-        </pre>
-        <p>ici le "@" veut dire qu'on va accéder aux ressources, le "+id" est là pour demander de créer un id ou
-            d'utiliser celui existant.
-        </p>
-        <p>Comme on l'a vu précédemment on va pouvoir accéder au View depuis son id grâce à findViewById(id_view).</p>
-      </article>
-      <article>
-        <h3>Paramètres du layout</h3>
+        <h2>La désérialisation en Android</h2>
         <p>
-          Tous les attributs jouant sur le layout de la vue vont commencer par layout_quelquechose. Par exemple pour
-            définir le la largeur et la hauteur, on devra utiliser 
-          <kbd>layout_width</kbd>
-           et 
-          <kbd>layout_height</kbd>
-          .
-            On peut définir une taille exacte, mais la plupart du temps, on va préférer utiliser une de ses deux
-            valeurs.
+          Pour nous permettre désérialiser il existe un objet 
+          <a href="https://developer.android.com/reference/android/view/LayoutInflater">LayoutInflater</a>
+          , à qui on
+            va donner le fichier XML à transformer en View.
         
         </p>
-        <ul>
-          <li>wrap_content : demande à la vue de prendre la taille de son contenu</li>
-          <li>match_parent : demande à la vue de prendre la taille de tout le parent</li>
-        </ul>
-      </article>
-      <article>
-        <h3>gravity / layout gravity</h3>
-        <p>Gravity est l'attribut à appliquer sur les enfants. Permet d'expliquer la position dans l'espace que l'enfant
-            prend. Layout_gravity permet de définir la position par rapport au parent.
+        <p>Grâce à cet objet, on va pouvoir créer des vues en XML est les désérialiser quand on en aura besoin.</p>
+        <p>
+          Soit le XML suivant
+            
+          <kbd>small_view.xml</kbd>
         </p>
         <pre>
           <code class="xml"><![CDATA[
                     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:app="http://schemas.android.com/apk/res-auto"
-                            xmlns:tools="http://schemas.android.com/tools"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            tools:context=".MainActivity">
+                            android:orientation="horizontal"
+                            android:padding="5dp">
                         <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:text="Hello World!" />
+                                android:layout_weight="10"
+                                android:background="#f00"
+                                android:gravity="center"
+                                android:textSize="20dp"
+                                android:textColor="#fff"
+                                android:text="Left" />
                         <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="right"
-                                android:text="Hello World!" />
+                                android:layout_weight="10"
+                                android:background="#0f0"
+                                android:gravity="center"
+                                android:textSize="20dp"
+                                android:textColor="#fff"
+                                android:text="Right" />
                         <TextView
-                                android:layout_width="match_parent"
-                                android:gravity="right"
+                                android:id="@+id/tv_view_number"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:text="Hello World!" />
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="Hello World!" />
+                                android:layout_weight="10"
+                                android:background="#00f"
+                                android:gravity="center"
+                                android:textSize="20dp"
+                                android:textColor="#fff"
+                                android:text="No " />
                     </LinearLayout>
+                ]]></code>
+        </pre>
+        <p>Si dans une activité, on veut ajouter 10 fois ce layout on devrait faire ceci.</p>
+        <pre>
+          <code class="java"><![CDATA[
+                    public class InflatorActivity extends AppCompatActivity {
+                        Context context;
+                        @Override
+                        protected void onCreate(Bundle savedInstanceState) {
+                            super.onCreate(savedInstanceState);
+                            context = this;
+                            LinearLayout llMain = new LinearLayout(context);
+                            llMain.setOrientation(LinearLayout.VERTICAL);
+                            setContentView(llMain);
+                            for (int i = 0; i < 10; i++) {
+                                //deserialization of view
+                                LinearLayout linearLayoutSmallView = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.small_view,null);
+                                TextView textViewNumberView = linearLayoutSmallView.findViewById(R.id.tv_view_number);
+                                textViewNumberView.setText("No : " + (i+1));
+                                llMain.addView(linearLayoutSmallView);
+                            }
+                        }
+                    }
                 ]]></code>
         </pre>
         <div class="container-fluid">
           <div class="row align-items-center">
             <div class="col-sm">
-              <img class="img-fluid rounded" src="../asset/manipulation_gravity_result.png"/>
-              <p>
-                        Voici le résultat dans l'émulateur.
-                    </p>
+              <img class="img-fluid rounded" src="../asset/manipulation_inflateur_small_view.png"/>
             </div>
             <div class="col-sm">
-              <img class="img-fluid rounded" src="../asset/manipulation_gravity_draw.png"/>
-              <p>Voici l'explication</p>
+              <p>Ici on voit qu'on a ajouté 10 fois la petite vue.</p>
+              <p>
+                Une fois désérialisé on peut aussi aller chercher un element de la petite vue grace a
+                        findViewById, mais ici il faudra faire :
+                        
+                <kbd>viewToInspect.findViewById</kbd>
+              </p>
             </div>
           </div>
         </div>
-      </article>
-      <article>
-        <h3>poids des éléments (layout_weight)</h3>
-        <p>Voici un attribut spécifique au LinearLayout qui va être très utile pour faire des designs Responsive. Il va
-            nous permettre d'expliquer le poids que l'objet va prendre dans la vue
+        <p>Si on reprend l'exemple ou on mélange XML et Java.</p>
+        <img class="img-fluid rounded" src="../asset/ui_xml_and_java.png"/>
+        <p>On va pouvoir mettre la main sur le containeur gris et ensuite dans une boucle désérialiser plusieurs fois le
+            conteneur rouge et aller changer la valeur dedans.
         </p>
-        <p>Le LinearLayout va additionner tous les poids et faire en sorte que la vue la fraction désirée du poids
-            total.
-        </p>
-        <pre>
-          <code class="xml"><![CDATA[
-                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:app="http://schemas.android.com/apk/res-auto"
-                            xmlns:tools="http://schemas.android.com/tools"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            tools:context=".MainActivity">
-                        <Button
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="40"
-                                android:text="btn 1" />
-                        <Button
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="60"
-                                android:text="btn 2" />
-                    </LinearLayout>
-                ]]></code>
-        </pre>
-        <p>Ici comme le LinearLayout est vertical il va additionner tous les poids soit 60+40 = 100 et faire en sorte
-            que le premier bouton fasse 40/100 et le deuxième 60/100
-        </p>
-        <img class="img-fluid rounded" src="../asset/manipulation_weight_verticale.png"/>
-        <pre>
-          <code class="xml"><![CDATA[
-                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:app="http://schemas.android.com/apk/res-auto"
-                            xmlns:tools="http://schemas.android.com/tools"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            tools:context=".MainActivity">
-                        <Button
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="2"
-                                android:text="btn 1" />
-                        <Button
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="5"
-                                android:text="btn 2" />
-                    </LinearLayout>
-                ]]></code>
-        </pre>
-        <p>Dans le cas ou le LinearLayout est horizontal le poids sera sur le width</p>
-        <img class="img-fluid rounded" src="../asset/manipulation_weight_horizontale.png"/>
-      </article>
-      <article>
-        <h2>Sérialisation / Desérialisation</h2>
       </article>
     </section>
     <section>
