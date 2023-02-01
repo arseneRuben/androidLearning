@@ -1,0 +1,11 @@
+Lautaro, Martínez, Attaquant, 22
+Lionel, Messi, Attaquant, 10
+Alexis, Mac Allister, Milieu, 20
+Enzo, Fernández, Milieu, 24
+Rodrigo, De Paul, Milieu, 7
+Ángel, Di María, Milieu, 11
+Nicolás, Tagliafico, Défenseur, 3
+Nicolás, Otamendi, Défenseur, 19
+Cristian, Romero, Défenseur, 13
+Nahuel, Molina, Défenseur, 26
+Emiliano, Martínez, Gardien de but, 23
