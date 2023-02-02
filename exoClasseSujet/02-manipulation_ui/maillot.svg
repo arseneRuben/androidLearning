@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="maillot.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="11.2"
+     inkscape:cx="-449.72782"
+     inkscape:cy="810.51964"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showguides="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1046"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       inkscape:connector-curvature="0"
+       id="path828"
+       d="m -120.15266,83.886459 c -0.19058,-2.471379 0.1299,-3.098322 -0.78486,-2.733449 -0.35287,0.188848 -1.31933,0.442543 -1.45353,0.3596 -0.32896,-0.515815 -0.0713,-2.435773 0.0309,-3.133358 1.50109,-1.076774 4.30311,-2.117346 4.94185,-2.117346 0.63874,0 3.40736,0.940346 4.90845,2.01712 0.0522,0.680881 0.0759,2.350273 0.0142,3.06654 -0.1342,0.08294 -1.18418,-0.220854 -1.53705,-0.409713 -0.93147,0.03603 -0.46065,0.479227 -0.65123,2.950606 l -0.16696,2.16503 h -2.56739 -2.5674 z"
+       style="fill:#1e1e1e;stroke-width:0.26458332"
+       sodipodi:nodetypes="ccccscccccccc"
+       inkscape:export-xdpi="503.35135"
+       inkscape:export-ydpi="503.35135" />
+  </g>
+</svg>

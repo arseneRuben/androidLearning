@@ -1,0 +1,11 @@
+22, "Lautaro", "Martínez", Attaquant
+10, "Lionel", "Messi", Attaquant
+20, "Alexis", "Mac Allister", Milieu
+24, "Enzo", "Fernández", Milieu
+7, "Rodrigo", "De Paul", Milieu
+11, "Ángel", "Di María", Milieu
+3, "Nicolás", "Tagliafico", Défenseur
+19, "Nicolás", "Otamendi", Défenseur
+13, "Cristian", "Romero", Défenseur
+26, "Nahuel", "Molina", Défenseur
+23, "Emiliano", "Martínez", Gardien de but
