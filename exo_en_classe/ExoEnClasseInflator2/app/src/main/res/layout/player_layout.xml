@@ -9,7 +9,7 @@
             android:layout_weight="30">
         <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="100dp"
                 android:src="@drawable/maillot" />
         <TextView
                 android:id="@+id/tv_numero_layout_player"
@@ -19,7 +19,7 @@
                 android:layout_centerVertical="true"
                 android:text="01"
                 android:textColor="#fff"
-                android:textSize="50dp" />
+                android:textSize="40dp" />
     </RelativeLayout>
     <TextView
             android:id="@+id/tv_nom_prenom_layout_player"
