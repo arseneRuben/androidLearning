@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     EditText edNom, edAge;
     TextView textViewRetour;
     Context context;
+    ActivityResultLauncher<Intent> resultActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             String age = edAge.getText().toString();
             //validation chamvide
             if (nom.equalsIgnoreCase("") || age.equalsIgnoreCase("")) {
-                Toast.makeText(context, "attention nom et age ne doivent pas etre vide",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "attention nom et age ne doivent pas etre vide", Toast.LENGTH_SHORT).show();
             } else {
                 intent.putExtra(Constante.nom, nom);
                 try {
@@ -57,39 +58,31 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //definition callback quand activityretour
+        resultActivity = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == RESULT_OK) {
+                            String nom = result.getData().getStringExtra(Constante.nom);
+                            String msgRetour = "";
+                            switch (result.getData().getIntExtra(Constante.idRadioGroupe, R.id.rb_en)) {
+                                case R.id.rb_fr:
+                                    msgRetour = "Bonjour";
+                                    break;
+                                case R.id.rb_en:
+                                    msgRetour = "Hello";
+                                    break;
+                            }
+                            textViewRetour.setText(msgRetour + " " + nom);
+                        }
+                    }
+                }
+        );
     }
     public void handlebtnStartActC(View view) {
-//        ActivityResultLauncher<Intent> resultActivity = registerForActivityResult(
-//                new ActivityResultContracts.StartActivityForResult(),
-//                new ActivityResultCallback<ActivityResult>() {
-//                    @Override
-//                    public void onActivityResult(ActivityResult result) {
-//                        if (result.getResultCode() == RESULT_OK) {
-//
-//
-//                        }
-//                    }
-//                }
-//        );
         Intent intent = new Intent(this, ActivityC.class);
-        startActivityForResult(intent, 42);
-//        resultActivity.launch(intent);
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 42 && resultCode == RESULT_OK) {
-            String nom = data.getStringExtra(Constante.nom);
-            String msgRetour = "";
-            switch (data.getIntExtra(Constante.idRadioGroupe, R.id.rb_en)) {
-                case R.id.rb_fr:
-                    msgRetour = "Bonjour";
-                    break;
-                case R.id.rb_en:
-                    msgRetour = "Hello";
-                    break;
-            }
-            textViewRetour.setText(msgRetour + " " + nom);
-        }
+        resultActivity.launch(intent);
     }
 }
