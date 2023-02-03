@@ -8,7 +8,7 @@
     <!--        <meta name="teaching-assistant-generator" content="moodle-slides"/>-->
     <meta name="teaching-assistant-menu-level" content="3"/>
     <meta name="teaching-assistant-version" content="2.8.0"/>
-    <meta name="teaching-assistant-course-datetime" content="2023-01-31 16:19:37"/>
+    <meta name="teaching-assistant-course-datetime" content="2023-02-02 16:26:56"/>
   </head>
   <body>
     <section>
@@ -1755,7 +1755,209 @@
     </section>
     <section>
       <h1>Les ressources dans Android</h1>
-      <!--TODO resources with qualifier-->
+      <p>Une application Android est composée de beaucoup plus que juste du code Java. Il y a aussi des ressources
+        séparées du code source comme des images, des fichiers audio et beaucoup d'autre.
+    </p>
+      <article>
+        <h2>Les différents types de ressource</h2>
+        <p>
+            Les ressources sont les fichiers externes et le contenu statique, tels que les bitmaps, les styles, les
+            strings, les couleurs ...
+        </p>
+        <p>
+            Vous devriez toujours externaliser les ressources d'application telles que les images et les chaînes de
+            votre
+            code, afin de pouvoir les gérer de manière indépendante.
+        </p>
+        <p>Android nous propose de regrouper les ressources dans des répertoires spécialement nommés.
+        </p>
+        <p>A chaque fois que vous ajoutez une ressource, Android Studio va générer automatiquement une référence pour
+            pouvoir y accéder.
+        </p>
+        <pre>
+          <code class="terminal"><![CDATA[
+                    MyProject/
+                        src/
+                            MyActivity.java
+                        res/
+                            drawable/
+                                graphic.png
+                            layout/
+                                main.xml
+                                info.xml
+                            mipmap/
+                                icon.png
+                            values/
+                                strings.xml
+                ]]></code>
+        </pre>
+        <p>
+          Voici la liste complete des ressources
+            
+          <a href="https://developer.android.com/guide/topics/resources/available-resources">Liste Ressources</a>
+        </p>
+      </article>
+      <article>
+        <h2>Les qualifiers</h2>
+        <p>Lorsque l'on rajoute une ressource, que ce soit un String, une image, un layout, ou autre on peut préciser
+            comment la
+            ressource doit se comporter selon différents critères et permettre ainsi au système de choisir quelle
+            ressource utiliser.
+        </p>
+        <img class="img-fluid rounded" src="../asset/ressources_qualifier_liste.png" alt=""/>
+      </article>
+      <article>
+        <h3>qualifier - orientation</h3>
+        <p>On peut par exemple sur un layout xml ajouter le qualifier orientation.</p>
+        <img class="img-fluid rounded" src="../asset/ressources_qualifier_orientation_portrait.png" alt=""/>
+        <p>Ici on a ajouté le qualifier orientation portrait. Si le téléphone est en mode portrait, le système va
+            automatiquement choisir ce fichier pour l'affichage.
+        </p>
+        <p>Si 'on veut ajouter le qualifier landscape sur un autre layout, pour que le système soit capable de choisir,
+            il va falloir avoir exactement le même nom de fichier, mais avec le qualifier landscape. Si vous faites cela
+            vous devriez obtenir cela dans la zone projet.
+        </p>
+        <img class="img-fluid rounded" src="../asset/ressources_qualifier_orientation_both.png" alt=""/>
+        <p>Si on regarde ce qu'Android Studio a fait, il a créé deux repertoires avec le qualifier dessus. Mais
+            finalement, on a deux fichiers avec le même nom.
+        </p>
+        <img class="img-fluid rounded" src="../asset/ressources_qualifier_folder.png" alt=""/>
+      </article>
+      <article>
+        <h3>qualifier - locale</h3>
+        <p>Il est aussi possible d'utiliser les qualifiers pour faire l'internationalisation de l'application. Si l'on
+            crée une ressource value avec tous les textes de l'application, on pourra dupliquer ce fichier et juste
+            traduire le texte. C'est le système qui en fonction de la langue va choisir le fichier à exécuter.
+        </p>
+        <p>Il faudra au minimum fait le fichier pour la langue par défaut et le fichier pour la langue voulue.</p>
+        <img class="img-fluid rounded" src="../asset/ressources_qualifier_local.png" alt=""/>
+        <p>Ici on a trois fichiers qui ont le même nom. Pour chaque string, on a mis exactement la même clef. La seule
+            chose qui change, c'est la valeur de chacun. Se sera le système qui décidera de choisir le fichier adapté.
+        </p>
+      </article>
+      <article>
+        <h2>La Class R</h2>
+        <p>Pour permettre de faire le lien entre les ressources et le code Java ou les ressources et le XML, android
+            utiliser une classe avec des int dedans pour cela.
+        </p>
+        <p>À chaque fois que l'on ajoute une ressource, android génère un int permettant d'identifier cette ressource.
+            Il ajoute ce int dans la classe R. Voici a quoi ressemble cette classe.
+        </p>
+        <pre>
+          <code class="java"><![CDATA[
+                    public class R {
+                        public static class layout{
+                            public static final int activity_main = 0xabc123;
+                            public static final int my_layout = 0xabc124;
+                            public static final int other_layout = 0xabc125;
+                        }
+                        public static class drawable{
+                            public static final int image1 = 0xbcd123;
+                            public static final int image2 = 0xbcd124;
+                            public static final int chat = 0xbcd125;
+                        }
+                        public static class string{
+                            public static final int msg_welcom = 0xefa123;
+                            public static final int app_name = 0xefa124;
+                            public static final int msg_btn_send = 0xefa125;
+                        }
+                        public static class color{
+                            public static final int color_texte = 0x456fa12;
+                            public static final int color_btn = 0x456fa13;
+                            public static final int color_border = 0x456fa14;
+                            public static final int color_title = 0x456fa15;
+                        }
+                    }
+                ]]></code>
+        </pre>
+      </article>
+      <article>
+        <h3>Accéder aux ressources en Java</h3>
+        <pre>
+          <code class="java"><![CDATA[
+                    Resources resources = context.getResources();
+                    String stringRessource = resources.getString(R.string.key_ressource);
+                    
+                    //XXX resValue = resources.getXXX(id);
+                ]]></code>
+        </pre>
+        <p>Depuis le context on peut récupérer toutes les ressources par l'intermédiaire de la classe R.</p>
+      </article>
+      <article>
+        <h3>Accéder aux ressources en XML</h3>
+        <p>En xml pour accéder aux ressources, on va utiliser le @</p>
+        <pre>
+          <code class="xml"><![CDATA[
+                    @[package:]type_ressource/nom_ressource
+                ]]></code>
+        </pre>
+        <ul>
+          <li>"package" : est optionnel, utilisé pour distinguer les classes R et android.R</li>
+          <li>"type" : correspond au type de ressources (layout, drawable, string, id)</li>
+          <li>"nom" : correspond au nom de la constante déclarée dans R</li>
+        </ul>
+        <p>Dans le cas des id on pourra avoir en plus le "+"</p>
+        <pre>
+          <code class="xml"><![CDATA[
+                    @+[package:]type/nom
+                ]]></code>
+        </pre>
+      </article>
+      <article>
+        <h2>String Dynamique dans les ressources</h2>
+        <p>Il est possible d'aller injecter du texte dans un String en utilisant la fonction format</p>
+        <pre>
+          <code class="xml"><![CDATA[
+                    <string name="dyn1">Hello %1$s, you have %2$d years</string>
+                ]]></code>
+        </pre>
+        <p>%n indiquer le rang de l'argument à insérer (%1 correspond au premier argument, %2 au deuxième argument,
+            etc.) ;
+        </p>
+        <p>$x, qui indique quel type d'information on veut ajouter ($s pour une chaîne de caractères et $d)</p>
+        <p>Dans le code java on pourra aller remplacer les %n pour la valeur voulue.</p>
+        <pre>
+          <code class="java"><![CDATA[
+                    Resources res = context.getResources();
+                    String chaine = res.getString(R.string.dyn1, "durand", 32);
+                ]]></code>
+        </pre>
+      </article>
+      <article>
+        <h2>Le répertoire Assets</h2>
+        <p>Quand dans android on veut ajouter une liste d'image, de fichier ou autre sans se préoccuper du nom, ou que
+            l'on désire sauvegarder du contenu pendant l'utilisation de l'application, on va pouvoir utiliser le
+            repertoire assets.
+        </p>
+        <p>Pour ajouter le répertoire assets : clique droit, New &gt; Folder &gt; Assets Folder</p>
+        <img class="img-fluid rounded" src="../asset/ressource_assets_folder.png" alt=""/>
+        <p>Toutes les images du UI vont se retrouver dans le repertoire drawable, mais les images que l'on utilise
+            pendant que l'application fonctionne seront préférablement sauvegarder dans assets/.
+        </p>
+      </article>
+      <article>
+        <h3>Accéder à un fichier depuis assets</h3>
+        <pre>
+          <code class="java"><![CDATA[
+                    AssetManager assetManager = getAssets(); //into activity
+                    AssetManager assetManager = context.getAssets(); // everywhere in application
+                    try {
+                        InputStream inputStream = assetManager.open("fileName");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                ]]></code>
+        </pre>
+        <p>Grâce à la méthode open, on va pouvoir récupérer les fichiers désirés depuis assets.</p>
+        <p>Si c'est une image, on va pouvoir la retransformer en Bitmap ou en Drawable</p>
+        <pre>
+          <code class="java"><![CDATA[
+                    InputStream inputStream = assetManager.open("fileName");
+                    Drawable drawableImage = Drawable.createFromStream(inputStream, null);
+                    Bitmap bitmapImage = BitmapFactory.decodeStream(inputStream);
+                ]]></code>
+        </pre>
+      </article>
     </section>
     <section>
       <h1>Les menus</h1>

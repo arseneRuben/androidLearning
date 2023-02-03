@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ActivityC">
+    <EditText
+            android:id="@+id/ed_nom_activity_c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="entrez votre nom" />
+    <RadioGroup
+            android:id="@+id/rg_activity_c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <RadioButton
+                android:id="@+id/rb_en"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Anglais" />
+        <RadioButton
+                android:id="@+id/rb_fr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Francais" />
+    </RadioGroup>
+    <Button
+            android:id="@+id/btn_retour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="return" />
+</LinearLayout>
