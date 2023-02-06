@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="msg_welcome">Hello How are you %1$s</string>
+</resources>
