@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ExoMenuDialog</string>
+    <string-array name="list_color">
+        <item>blue</item>
+        <item>yellow</item>
+        <item>green</item>
+        <item>red</item>
+    </string-array>
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/ll_main_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+    <Button
+            android:id="@+id/btn_choose_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choose Color" />
+    <TextView
+            android:id="@+id/tv_color_selected"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No Color Selected" />
+    <Button
+            android:id="@+id/btn_choose_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choose Image" />
+    <RelativeLayout
+            android:id="@+id/rl_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="Pas d 'image pour le moment" />
+    </RelativeLayout>
+</LinearLayout>
