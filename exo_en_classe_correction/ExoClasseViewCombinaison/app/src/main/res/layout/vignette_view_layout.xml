@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+    <ImageView
+            android:id="@+id/img_vignette_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/personne1" />
+    <TextView
+            android:id="@+id/tv_vignette_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Ma super image"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:background="#86000000"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        android:text="Click"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+</RelativeLayout>

@@ -7,6 +7,23 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".MainActivity">
-
-
+    <learn.android.exoclasseviewcombinaison.view.VignetteView
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+    <learn.android.exoclasseviewcombinaison.view.VignetteView
+            android:layout_width="match_parent"
+            app:id_ressource_img="@drawable/personne1"
+            app:label="Super test"
+            android:layout_height="200dp" />
+    <learn.android.exoclasseviewcombinaison.view.VignetteView
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+    <learn.android.exoclasseviewcombinaison.view.VignetteView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:id_ressource_img="@drawable/personne3"
+            app:label="test" />
+    <learn.android.exoclasseviewcombinaison.view.VignetteView
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
 </LinearLayout>
