@@ -8,7 +8,7 @@
     <!--        <meta name="teaching-assistant-generator" content="moodle-slides"/>-->
     <meta name="teaching-assistant-menu-level" content="3"/>
     <meta name="teaching-assistant-version" content="2.8.0"/>
-    <meta name="teaching-assistant-course-datetime" content="2023-02-02 16:26:56"/>
+    <meta name="teaching-assistant-course-datetime" content="2023-02-07 08:49:33"/>
   </head>
   <body>
     <section>
@@ -1924,23 +1924,33 @@
         </pre>
       </article>
       <article>
-        <h2>Le répertoire Assets</h2>
+        <h2>Le répertoire Asset</h2>
         <p>Quand dans android on veut ajouter une liste d'image, de fichier ou autre sans se préoccuper du nom, ou que
             l'on désire sauvegarder du contenu pendant l'utilisation de l'application, on va pouvoir utiliser le
-            repertoire assets.
+            repertoire asset.
         </p>
-        <p>Pour ajouter le répertoire assets : clique droit, New &gt; Folder &gt; Assets Folder</p>
-        <img class="img-fluid rounded" src="../asset/ressource_assets_folder.png" alt=""/>
+        <p>Pour ajouter le répertoire asset : clique droit, New &gt; Folder &gt; asset Folder</p>
+        <img class="img-fluid rounded" src="../asset/ressource_asset_folder.png" alt=""/>
         <p>Toutes les images du UI vont se retrouver dans le repertoire drawable, mais les images que l'on utilise
-            pendant que l'application fonctionne seront préférablement sauvegarder dans assets/.
+            pendant que l'application fonctionne seront préférablement sauvegarder dans asset/.
         </p>
       </article>
       <article>
-        <h3>Accéder à un fichier depuis assets</h3>
+        <h2>Les méthodes de AssetManager</h2>
+        <p>Sur l'objet AssetManager il existe plusieurs méthodes intéressantes</p>
+        <ul>
+          <li>open(String path) : renvoie un inputStream du fichier que l'on veut ouvrir</li>
+          <li>
+                list(String path) : renvoie un tableau de String[] pour le path préciser.
+            </li>
+        </ul>
+      </article>
+      <article>
+        <h3>Accéder à un fichier depuis asset</h3>
         <pre>
           <code class="java"><![CDATA[
-                    AssetManager assetManager = getAssets(); //into activity
-                    AssetManager assetManager = context.getAssets(); // everywhere in application
+                    AssetManager assetManager = getasset(); //into activity
+                    AssetManager assetManager = context.getasset(); // everywhere in application
                     try {
                         InputStream inputStream = assetManager.open("fileName");
                     } catch (IOException e) {
@@ -1948,7 +1958,7 @@
                     }
                 ]]></code>
         </pre>
-        <p>Grâce à la méthode open, on va pouvoir récupérer les fichiers désirés depuis assets.</p>
+        <p>Grâce à la méthode open, on va pouvoir récupérer les fichiers désirés depuis asset.</p>
         <p>Si c'est une image, on va pouvoir la retransformer en Bitmap ou en Drawable</p>
         <pre>
           <code class="java"><![CDATA[
@@ -1958,25 +1968,35 @@
                 ]]></code>
         </pre>
       </article>
+      <article>
+        <h3>Lister les fichiers dans Asset</h3>
+        <p>Si on a un répertoire /img dans asset</p>
+        <!--         TODO ajouter exemple pour lister fichier dans asset-->
+      </article>
     </section>
     <section>
       <h1>Les menus</h1>
-      <p>
-        Référence vers la
-        
-        <a href="https://developer.android.com/develop/ui/views/components/menus">DOC</a>
-      </p>
-      <p>Les menus sont un composant d'interface utilisateur courant dans de nombreux types d'applications.</p>
-      <p>Depuis Android 3.0 (API 11), les appareils ne sont plus tenus de fournir un bouton physique pour le menu.
-        Pour palier è ce problème, on hérite de AppCompatActivity qui va gérer l'absence ou la présence du menu.
-    </p>
-      <p>Il existe trois types de menu</p>
-      <ul>
-        <li>Menu d'option (menu hamburger) et barre d'action</li>
-        <li>Menu Contextuel</li>
-        <li>Popup menu</li>
-      </ul>
-      <p>Dans le cadre du cours, on détaillera que le premier type de menu. Les autres s'utilisent de façon similaire</p>
+      <article>
+        <h2>Les différents types de menu</h2>
+        <p>
+          Référence vers la
+            
+          <a href="https://developer.android.com/develop/ui/views/components/menus">DOC</a>
+        </p>
+        <p>Les menus sont un composant d'interface utilisateur courant dans de nombreux types d'applications.</p>
+        <p>Depuis Android 3.0 (API 11), les appareils ne sont plus tenus de fournir un bouton physique pour le menu.
+            Pour palier è ce problème, on hérite de AppCompatActivity qui va gérer l'absence ou la présence du menu.
+        </p>
+        <p>Il existe trois types de menu</p>
+        <ul>
+          <li>Menu d'option (menu hamburger) et barre d'action</li>
+          <li>Menu Contextuel</li>
+          <li>Popup menu</li>
+        </ul>
+        <p>Dans le cadre du cours, on détaillera que le premier type de menu. Les autres s'utilisent de façon
+            similaire
+        </p>
+      </article>
       <article>
         <h2>Définition du menu XML</h2>
         <p>
@@ -2251,7 +2271,7 @@
                         //action if i don't know is select
                     }
                 });
-                builder.setPositiveButton("no", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("no", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //action if no select
@@ -2414,6 +2434,347 @@
           .
         
         </p>
+      </article>
+    </section>
+    <section>
+      <h1>Les vues personnalisées</h1>
+      <article>
+        <h2>Les différentes vues personnalisées</h2>
+        <p>
+          Quand on développe des interfaces graphiques dans android il se peut que les vues pré-construites ne soient
+            pas suffisantes. Il va alors falloir faire votre propre vue.
+            
+          <a href="https://developer.android.com/develop/ui/views/layout/custom-views/custom-components">DOC</a>
+        </p>
+        <p>Que se soit dans Android en Java ou dans un autre type vue (Swing, WPF) il existe 3 types de vues
+            personnalisées.
+        </p>
+        <ul>
+          <li>Vue par combinaison</li>
+          <li>Vue par redéfinition</li>
+          <li>
+            Vue de zéro
+                
+            <ul>
+              <li>Depuis un View</li>
+              <li>Depuis un ViewGroup</li>
+            </ul>
+          </li>
+        </ul>
+        <p>Pour les deux derniers types de vue il faudra comprendre davantage comment la classe View fonctionne.</p>
+      </article>
+      <article>
+        <h2>Vue par combinaison</h2>
+        <p>Dans la vue pas combinaison, le but va être de combiner des vues pré-existantes pour faire notre propre
+            vue.
+        </p>
+      </article>
+      <article>
+        <h3>InputView</h3>
+        <p>Prenons l'exemple d'un champ de formulaire. En général on a toujours un label et une zone de selection de la
+            valeur.
+        </p>
+        <img class="img-fluid rounded" src="../asset/view_input_view.png" alt=""/>
+        <p>Ici il faudra créer une classe InputView qui va hériter de LinearLayout.</p>
+        <p>L'avantage et que toute la logique se retrouve dans InputView</p>
+        <pre>
+          <code class="java"><![CDATA[
+                    public class InputView extends LinearLayout {
+                        TextView textView;
+                        EditText editText;
+                        public InputView(Context context) {
+                            super(context);
+                            init();
+                        }
+                        private void init() {
+                            setOrientation(HORIZONTAL);
+                            textView = new TextView(getContext());
+                            editText = new EditText(getContext());
+                            LayoutParams layoutParamsTextView = new LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 30);
+                            LayoutParams layoutParamsEditText = new LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 70);
+                            textView.setLayoutParams(layoutParamsTextView);
+                            textView.setGravity(Gravity.CENTER);
+                            textView.setText("default");
+                            editText.setLayoutParams(layoutParamsEditText);
+                            addView(textView);
+                            addView(editText);
+                        }
+                        public void setLabel(String label) {
+                            textView.setText(label);
+                        }
+                    }
+                ]]></code>
+        </pre>
+        <p>Ici in fait une démo ou on construit tous les objets de la vue programmatiquement, mais on aurait pu faire un
+            layout XML et utiliser l'inflateur pour l'affecter à la vue.
+        </p>
+        <pre>
+          <code class="java"><![CDATA[
+                    public class MainActivity extends AppCompatActivity {
+                        Context context;
+                        @Override
+                        protected void onCreate(Bundle savedInstanceState) {
+                            super.onCreate(savedInstanceState);
+                            context = this;
+                            LinearLayout llMain = new LinearLayout(context);
+                            llMain.setOrientation(LinearLayout.VERTICAL);
+                            setContentView(llMain);
+                            InputView inputName = new InputView(context);
+                            inputName.setLabel("name");
+                            InputView inputAge = new InputView(context);
+                            inputAge.setLabel("age");
+                    
+                            llMain.addView(inputName);
+                            llMain.addView(inputAge);
+                        }
+                    }
+                ]]></code>
+        </pre>
+        <p>Il est maintenant facile de rajouter une nouvelle InputView dans notre Layout</p>
+        <img class="img-fluid rounded" src="../asset/view_input_view_result.png"/>
+      </article>
+      <article>
+        <h3>InputView en XML</h3>
+        <p>Dans Android on a aussi la flexibilité de pouvoir utiliser nos vues personnalisées en Java, mais aussi en
+            XML
+        </p>
+        <p>
+          Pour être capable d'utiliser cette vue dans un layout XML il faut 
+          <b>absolument</b>
+           implémenter le
+            constructeur utilisé pendant la dé-sérialisation.
+        
+        </p>
+        <pre>
+          <code class="java"><![CDATA[
+                    public InputView(Context context) {
+                        super(context);
+                        //constructor Java
+                        init();
+                    }
+                    public InputView(Context context, @Nullable AttributeSet attrs) {
+                        super(context, attrs);
+                        //constructor use by xml de-serialization
+                        init();
+                    }
+                ]]></code>
+        </pre>
+        <pre>
+          <code class="xml"><![CDATA[
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            xmlns:tools="http://schemas.android.com/tools"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            tools:context=".MainActivity">
+                        <com.cours.devcoursandroid.InputView
+                                android:id="@+id/in_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                        <com.cours.devcoursandroid.InputView
+                                android:id="@+id/in_age"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                ]]></code>
+        </pre>
+        <p>On peut maintenant ajouter autant de vue InputView que l'on veut dans le XML, le problème est qu'on
+            désirerait être capable d'ajouter des attributs XML personnalisés. On vas aussi pouvoir le faire, mais on
+            doit respecter certaines étapes
+        </p>
+      </article>
+      <article>
+        <h4>déclarer un styleable</h4>
+        <p>
+          Dans les resources il faut ajouter une nouvelle resource de type 
+          <![CDATA[ <declare-styleable>]]>
+          , on pourra
+            alors spécifier les attributs que l'on veut ajouter et le type de chacun.
+            
+          <a href="https://developer.android.com/develop/ui/views/layout/custom-views/create-view#customattr">DOC</a>
+        </p>
+        <pre>
+          <code class="xml"><![CDATA[
+                    <declare-styleable name="InputView">
+                        <attr name="label" format="string"/>
+                        <attr name="color" format="color" />
+                    </declare-styleable>
+                ]]></code>
+        </pre>
+        <p>La valeur de l'attribut name de declare-styleable doit être le même que le nom de la classe héritant de
+            View
+        </p>
+        <p>Dès maintenant on peut ajouter un attribut label sur notre vue. Le seul problème, c'est que l'inflateur ne
+            sait pas encore comment appliquer cet attribut. On va devoir préciser ceci dans le deuxième constructeur.
+        </p>
+      </article>
+      <article>
+        <h4>Appliquer les attributs dans le constructeur XML</h4>
+        <p>Quand on dé-sérialise une vue XML tous les attributs sont passés dans AttributeSet. Android nous permet de
+            récupérer dans un TypedArray seulement les attributs personnalisés de notre vue.
+        </p>
+        <pre>
+          <code class="java"><![CDATA[
+                    public InputView(Context context, @Nullable AttributeSet attrs) {
+                        super(context, attrs);
+                        //constructor use by xml de-serialization
+                        init();
+                        TypedArray customAttribut = getContext().obtainStyledAttributes(attrs, R.styleable.InputView);
+                        String labelValueFromXML = customAttribut.getString(R.styleable.InputView_label);
+                        int colorText = customAttribut.getColor(R.styleable.InputView_color, Color.BLACK);
+                        textView.setTextColor(colorText);
+                        setLabel(labelValueFromXML);
+                        customAttribut.recycle();
+                    }
+                ]]></code>
+        </pre>
+      </article>
+      <article>
+        <h4>Résultat</h4>
+        <p>Voici un exemple du XML avec ce que l'on obtient dans la vue</p>
+        <img class="img-fluid rounded" src="../asset/view_xml_attribut_result.png"/>
+      </article>
+      <article>
+        <h2>Fonctionnement des View</h2>
+        <!-- TODO add better explanation -->
+        <p>Comme les deux prochains types de view nécessite d'aller modifier la vue, il nous faut d'abord comprendre
+            comment fonctionne la classe View.
+        </p>
+        <p>
+          Lors du procédé de construction de chaque View, plusieurs méthodes du cycle de vie d'une View sont appelées
+            
+          <a href="https://developer.android.com/reference/android/view/View#implementing-a-custom-view">DOC</a>
+          .
+            Voici les principales :
+        
+        </p>
+        <ul>
+          <li>onMeasure</li>
+          <li>onLayout</li>
+          <li>onDraw</li>
+        </ul>
+        <p>La réalisation du layout et un procédé en 2 passages :</p>
+        <ul>
+          <li>passage pour donner la taille</li>
+          <li>passage pour donner la position</li>
+        </ul>
+        <p>Finalement une fois que toutes les vues sont dimensionnées et positionnées, ce sera le temps du dessin avec
+            onDraw
+        </p>
+      </article>
+      <article>
+        <h3>passage pour la taille</h3>
+        <p>
+          L'étape de la mesure se fera dans 
+          <kbd>onMeasure</kbd>
+           et se passera aussi en deux passages du haut vers le
+            bas dans l'arbre de composant
+        
+        </p>
+        <p>C'est donc le parent qui sera responsable d'appeler measure sur les enfants.</p>
+        <p>Il existe deux valeurs de taille dans une View, la taille qu'elle voudrait avoir (measureWidth/measureHeight)
+            et la taille qu'elle aura réellement dans la vue (width/height).
+        </p>
+        <p>C'est pour cela que measure est appelée deux fois.</p>
+        <pre>
+          <code class="java"><![CDATA[
+                    @Override
+                    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+                        int measureWidth = MeasureSpec.makeMeasureSpec(200, MeasureSpec.AT_MOST);
+                        int measureHeight = MeasureSpec.makeMeasureSpec(60, MeasureSpec.AT_MOST);
+                        setMeasuredDimension(measureWidth, measureHeight); //must be call to give size
+                    }
+                ]]></code>
+        </pre>
+        <p>La méthode setMeasureDimension permet de définir la taille désirée par la vue.</p>
+        <p>Pour spécifier le comportement de la vue il measure est en fait une valeur composée de 2 données. La taille
+            que l'on veut avoir et une indication pour le parent pour savoir s'il peut changer ou non la taille de
+            l'enfant.
+        </p>
+        <ul>
+          <li>UNSPECIFIED</li>
+          <li>EXACTLY</li>
+          <li>AT_MOST</li>
+        </ul>
+        <pre>
+          <code class="java"><![CDATA[
+                    int measure = MeasureSpec.makeMeasureSpec(sizeInPixel, MeasureSpec.AT_MOST);
+                ]]></code>
+        </pre>
+      </article>
+      <article>
+        <h3>Passage pour le positionnement</h3>
+        <p>Une fois dimensionné, c'est le parent qui est responsable d'appeler layout pour positionner tous les
+            enfants.
+        </p>
+      </article>
+      <article>
+        <h3>Dessiner la vue</h3>
+        <p>Ici c'est la méthode onDraw qui est appelée pour expliquer comment dessiner la vue.</p>
+        <pre>
+          <code class="java"><![CDATA[
+                    @Override
+                    protected void onDraw(Canvas canvas) {
+                        super.onDraw(canvas); // if we want draw parent
+                        canvas.drawRect(0,0,getWidth(), 50, new Paint());
+                    }
+                ]]></code>
+        </pre>
+        <p>C'est à travers l'objet Canvas que l'on va pouvoir dessiner des rectangles, lignes, points, texte ou images
+        </p>
+        <p>Lorsque l'on change la vue et que l'on veut que la redessiner, on peut appeler programmatiquement
+            invalidate() pour redessiner la vue.
+        </p>
+      </article>
+      <article>
+        <h2>Vue par redéfinissions</h2>
+        <p>Dans le cas ou la vue existante nous convient presque et que l'on veut juste ajouter des détails de dessin
+            dessus, il nous suffit d'en hériter et de redéfinir onDraw.
+        </p>
+        <p>Voici un exemple où on voudrait ajouter un rectangle sur un bouton.</p>
+        <pre>
+          <code class="java"><![CDATA[
+                    public class CustomButton extends Button implements View.OnClickListener {
+                        Paint paint;
+                        RectF positionRect;
+                        float rectSize;
+                        public CustomButton(Context context) {
+                            super(context);
+                            paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+                            paint.setColor(Color.rgb(255, 10, 10));
+                            rectSize = 50;
+                            setOnClickListener(this);
+                            positionRect = new RectF();
+                        }
+                        @Override
+                        protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+                            super.onLayout(changed, left, top, right, bottom);
+                            positionRect.set(left + rectSize, getPaddingTop(), left + (2 * rectSize), getHeight() - getPaddingBottom());
+                        }
+                        @Override
+                        protected void onDraw(Canvas canvas) {
+                            super.onDraw(canvas);
+                            canvas.drawRect(positionRect, paint);
+                        }
+                        @Override
+                        public void onClick(View v) {
+                            paint.setColor(Color.rgb(getRandomNb(), getRandomNb(), getRandomNb()));
+                            invalidate(); //to redraw view
+                        }
+                        private int getRandomNb() {
+                            return (int) (Math.random() * 255);
+                        }
+                    }
+                ]]></code>
+        </pre>
+      </article>
+      <article>
+        <h2>Vue de zéro</h2>
+        <p>Lorsque la vue que l'on veut n'existe pas il faudra alors tout faire, pas seulement redéfinir onDraw, mais
+            aussi onMeasure. Très puissant, mais plus complexe à implémenter, souvent utilisé pour faire des jeux.
+        </p>
+        <!-- TODO finish view from scratch -->
       </article>
     </section>
     <section>
@@ -2798,10 +3159,6 @@
                 ]]></code>
         </pre>
       </article>
-    </section>
-    <section>
-      <h1>Les vues personnalisées</h1>
-      <!--TODO custom view-->
     </section>
     <section>
       <h1>Sauvegarde des informations</h1>
