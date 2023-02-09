@@ -19,14 +19,14 @@ public class VignetteView extends RelativeLayout {
     }
     private void init() {
         //creer vur programmatique
-//        label = new TextView(getContext());
-//        image = new ImageView(getContext());
-//        addView(image);
-//        addView(label);
+        label = new TextView(getContext());
+        image = new ImageView(getContext());
+        addView(image);
+        addView(label);
         //creer ma vue depuis le XML
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.vignette_view_layout, this);
-        label = view.findViewById(R.id.tv_vignette_layout);
-        image = view.findViewById(R.id.img_vignette_layout);
+//        View view = LayoutInflater.from(getContext()).inflate(R.layout.vignette_view_layout, this);
+//        label = view.findViewById(R.id.tv_vignette_layout);
+//        image = view.findViewById(R.id.img_vignette_layout);
     }
     public VignetteView(Context context, AttributeSet attrs) {
         super(context, attrs);
