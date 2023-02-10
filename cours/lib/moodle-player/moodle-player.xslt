@@ -242,13 +242,7 @@
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="course" role="tabpanel" aria-labelledby="course-tab">
                         <xsl:apply-templates />
-                    </div>
-                    <div class="tab-pane fade" id="reference" role="tabpanel" aria-labelledby="reference-tab">
-                        <xsl:call-template name="reference" />
-                    </div>
-                    <div class="tab-pane fade" id="source" role="tabpanel" aria-labelledby="source-tab">
-                        <xsl:call-template name="source" />
-                    </div>
+                    </div>                
                 </div>
             </xsl:element>
             <script>
@@ -291,7 +285,6 @@
         <xsl:element name="div">
             <xsl:attribute name="class">alert alert-light build-info</xsl:attribute>
             <xsl:attribute name="role">alert</xsl:attribute>
-
             <xsl:element name="div">
                 <xsl:value-of select="/html/head/meta[@name='teaching-assistant-course-datetime']/@content" />
             </xsl:element>
@@ -300,103 +293,7 @@
                 <xsl:text>&#x20;</xsl:text>
                 <xsl:value-of select="/html/head/meta[@name='teaching-assistant-version']/@content" />
             </xsl:element>
-
         </xsl:element>
-    </xsl:template>
-
-    <xsl:template name="reference">
-        <xsl:element name="ul">
-            <xsl:for-each select="//section">
-                <li>
-                    <xsl:element name="h1">
-                        <xsl:element name="span">
-                            <xsl:attribute name="class">badge badge-secondary</xsl:attribute>
-                            <xsl:value-of select="h1" />
-                        </xsl:element>
-                    </xsl:element>
-                    <ul>
-                        <xsl:for-each select=".//a">
-                            <li>
-                                <xsl:element name="a">
-                                    <xsl:attribute name="href">
-                                        <xsl:value-of select="@href" />
-                                    </xsl:attribute>
-                                    <xsl:attribute name="target">_blank</xsl:attribute>
-                                    <xsl:value-of select="." />
-                                </xsl:element>
-                            </li>
-                        </xsl:for-each>
-                    </ul>
-                </li>
-            </xsl:for-each>
-        </xsl:element>
-    </xsl:template>
-
-    <xsl:template name="source">
-        <xsl:for-each select="//section">
-            <xsl:variable name="i" select="position()" />
-            <section>
-                <xsl:element name="h1">
-                    <xsl:element name="span">
-                        <xsl:attribute name="class">badge badge-secondary</xsl:attribute>
-                        <xsl:value-of select="h1" />
-                    </xsl:element>
-                </xsl:element>
-                <xsl:for-each select="article">
-                    <xsl:variable name="j" select="position()" />
-                    <xsl:element name="article">
-                        <xsl:attribute name="class">contain-h2</xsl:attribute>
-                        <xsl:element name="h2">
-                            <xsl:element name="span">
-                                <xsl:attribute name="class">badge badge-secondary</xsl:attribute>
-                                <xsl:value-of select="h2" />
-                            </xsl:element>
-                        </xsl:element>
-                    </xsl:element>
-                    <xsl:for-each select="//pre">
-                        <xsl:variable name="k" select="position()" />
-                        <xsl:element name="article">
-                            <xsl:attribute name="class">contain-h3</xsl:attribute>
-                            <!-- please kill me as soon as -->
-                            <div></div>
-                            <xsl:element name="div">
-                                <xsl:attribute name="class">card</xsl:attribute>
-                                <xsl:element name="div">
-                                    <xsl:attribute name="class">card-body</xsl:attribute>
-                                    <xsl:element name="h3">
-                                        <xsl:attribute name="class">card-title</xsl:attribute>
-                                        <xsl:value-of select="code/@data-title" />
-                                    </xsl:element>
-                                    <xsl:element name="h4">
-                                        <xsl:attribute name="class">card-subtitle</xsl:attribute>
-                                        <xsl:value-of select="code/@data-subtitle" />
-                                    </xsl:element>
-                                    <xsl:element name="pre">
-                                        <xsl:attribute name="id">
-                                            <xsl:value-of select="concat('code_snippet_', $i, '_', $j, '_', $k)" />
-                                        </xsl:attribute>
-                                        <xsl:element name="code">
-                                            <xsl:attribute name="class">
-                                                <xsl:value-of select="code/@class" />
-                                            </xsl:attribute>
-                                            <xsl:value-of select="./code" />
-                                        </xsl:element>
-                                    </xsl:element>
-                                    <xsl:element name="button">
-                                        <xsl:attribute name="class">copy-button btn btn-light noprint</xsl:attribute>
-                                        <xsl:attribute name="data-clipboard-action">copy</xsl:attribute>
-                                        <xsl:attribute name="data-clipboard-target">
-                                            <xsl:value-of select="concat('#code_snippet_', $i, '_', $j, '_', $k)" />
-                                        </xsl:attribute>
-                                        <xsl:value-of select="$lang//labels/copy" />
-                                    </xsl:element>
-                                </xsl:element>
-                            </xsl:element>
-                        </xsl:element>
-                    </xsl:for-each>
-                </xsl:for-each>
-            </section>
-        </xsl:for-each>
-    </xsl:template>
+    </xsl:template> 
 
 </xsl:transform>
