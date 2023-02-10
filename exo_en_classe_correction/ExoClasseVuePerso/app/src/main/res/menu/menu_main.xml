@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Composition">
+        <menu>
+            <item
+                    android:id="@+id/menu_field_text"
+                    android:title="Field Text" />
+            <item
+                    android:id="@+id/menu_field_btn"
+                    android:title="Field Btn" />
+        </menu>
+    </item>
+    <item
+            android:id="@+id/menu_redefinition"
+            android:title="Redefinition" />
+    <item
+            android:id="@+id/menu_from_scratch"
+            android:title="De Zero"></item>
+</menu>
