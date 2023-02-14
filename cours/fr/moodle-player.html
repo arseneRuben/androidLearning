@@ -16,10 +16,10 @@
       <meta name="teaching-assistant-code-style" content="dracula">
       <meta name="teaching-assistant-generator" content="moodle-player">
       <!--        uncomment to add slide-->
-    <meta name="teaching-assistant-generator" content="moodle-slides">
-      <meta name="teaching-assistant-menu-level" content="3">
+    <!--                <meta name="teaching-assistant-generator" content="moodle-slides"/>-->
+    <meta name="teaching-assistant-menu-level" content="3">
       <meta name="teaching-assistant-version" content="2.8.0">
-      <meta name="teaching-assistant-course-datetime" content="2023-02-10 11:10:14">
+      <meta name="teaching-assistant-course-datetime" content="2023-02-14 10:47:33">
    </head>
    <body>
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarToggler">
@@ -3358,20 +3358,20 @@
                         switch(action) {
                             case (MotionEvent.ACTION_DOWN) :
                                 Log.d(DEBUG_TAG,"Action was DOWN");
-                                return true;
+                                break;
                             case (MotionEvent.ACTION_MOVE) :
                                 Log.d(DEBUG_TAG,"Action was MOVE");
-                                return true;
+                                break;
                             case (MotionEvent.ACTION_UP) :
                                 Log.d(DEBUG_TAG,"Action was UP");
-                                return true;
+                                break;
                             case (MotionEvent.ACTION_OUTSIDE) :
                                 Log.d(DEBUG_TAG,"Movement occurred outside bounds " +
                                         "of current screen element");
-                                return true;
+                                break;
                             default :
-                                return super.onTouchEvent(event);
                         }
+                        return true;
                     }
                     
                     //exemple sur une sous-classe de View
@@ -3448,7 +3448,6 @@
                             }
                             case MotionEvent.ACTION_UP:
                                 Log.d(TAG, "index up: " + pointerId);
-                
                                 break;
                             case MotionEvent.ACTION_POINTER_UP:
                                 Log.d(TAG, "index up: " + pointerId);
@@ -4435,7 +4434,7 @@
                         });
                     
                 </script><div class="alert alert-light build-info" role="alert">
-         <div>2023-02-10 11:10:14</div>
+         <div>2023-02-14 10:47:33</div>
          <div>Teaching Assistant 2.8.0</div>
       </div>
    </body>

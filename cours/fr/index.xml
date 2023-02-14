@@ -5,10 +5,10 @@
     <meta name="teaching-assistant-code-style" content="dracula"/>
     <meta name="teaching-assistant-generator" content="moodle-player"/>
     <!--        uncomment to add slide-->
-    <meta name="teaching-assistant-generator" content="moodle-slides"/>
+    <!--                <meta name="teaching-assistant-generator" content="moodle-slides"/>-->
     <meta name="teaching-assistant-menu-level" content="3"/>
     <meta name="teaching-assistant-version" content="2.8.0"/>
-    <meta name="teaching-assistant-course-datetime" content="2023-02-10 11:10:14"/>
+    <meta name="teaching-assistant-course-datetime" content="2023-02-14 10:47:33"/>
   </head>
   <body>
     <section>
@@ -2929,20 +2929,20 @@
                         switch(action) {
                             case (MotionEvent.ACTION_DOWN) :
                                 Log.d(DEBUG_TAG,"Action was DOWN");
-                                return true;
+                                break;
                             case (MotionEvent.ACTION_MOVE) :
                                 Log.d(DEBUG_TAG,"Action was MOVE");
-                                return true;
+                                break;
                             case (MotionEvent.ACTION_UP) :
                                 Log.d(DEBUG_TAG,"Action was UP");
-                                return true;
+                                break;
                             case (MotionEvent.ACTION_OUTSIDE) :
                                 Log.d(DEBUG_TAG,"Movement occurred outside bounds " +
                                         "of current screen element");
-                                return true;
+                                break;
                             default :
-                                return super.onTouchEvent(event);
                         }
+                        return true;
                     }
                     
                     //exemple sur une sous-classe de View
@@ -3016,7 +3016,6 @@
                             }
                             case MotionEvent.ACTION_UP:
                                 Log.d(TAG, "index up: " + pointerId);
-                
                                 break;
                             case MotionEvent.ACTION_POINTER_UP:
                                 Log.d(TAG, "index up: " + pointerId);

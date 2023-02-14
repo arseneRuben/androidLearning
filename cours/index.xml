@@ -4,7 +4,6 @@
     <language code="fr" nativeName="Français">
       <pages>
         <page name="moodle-player" extension=".html"/>
-        <page name="moodle-slides" extension=".html"/>
       </pages>
     </language>
   </languages>
