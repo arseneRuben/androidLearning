@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ChooseDogActivity">
+    <ImageView
+            android:onClick="handleClickImage"
+            android:id="@+id/toutou1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/chien1"
+        android:layout_weight="1"/>
+    <ImageView
+            android:onClick="handleClickImage"
+            android:id="@+id/toutou2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/chien2"
+            android:layout_weight="1"/>
+    <ImageView
+            android:onClick="handleClickImage"
+            android:id="@+id/toutou3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/chien3"
+            android:layout_weight="1"/>
+</LinearLayout>
