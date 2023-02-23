@@ -1,0 +1,8 @@
+/**/
+select quantite from panier where id_produit = ?;
+/**/
+select * from produit;
+/**/
+select pr.id, titre, description, prix, nom_image, quantite from produit as pr left join panier as pa on pr.id = pa.id_produit where id_type_menu = ?;
+/**/
+select pr.id,titre, description, prix, nom_image,quantite from produit as pr inner join panier as pa on pr.id = pa.id_produit where pa.quantite > 0
